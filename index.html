@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Interactive Indian History Map</title>
+
+  <!-- Leaflet CSS -->
+  <link rel="stylesheet" href="https://unpkg.com/leaflet/dist/leaflet.css" />
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+
+  <!-- Panel Container -->
+  <div id="leftPanel">
+    <!-- Topbar -->
+    <div class="topbar">
+      <label class="dark-toggle">
+        🌙 Dark Mode
+        <input type="checkbox" id="darkModeToggle" />
+      </label>
+      <label class="theme-toggle">
+      <button id="gpsBtn">📍 My Location</button>
+    </div>
+
+    <!-- Sidebar -->
+    <div id="sidebar">
+      <h2>🔎 Filters</h2>
+
+      <div class="filter-group search-wrapper">
+        <label for="search">Search Event:</label>
+        <input type="text" id="search" placeholder="e.g. Panipat, Gandhi, etc." />
+        <button id="clearSearch">❌</button>
+        <ul id="suggestions"></ul>
+      </div>
+
+      <div class="filter-group">
+        <label for="dynasty">Select Dynasty/Empire:</label>
+        <select id="dynasty">
+          <option value="all">All</option>
+          <option value="maurya">Maurya Empire</option>
+          <option value="gupta">Gupta Empire</option>
+          <option value="delhi_sultanate">Delhi Sultanate</option>
+          <option value="mughal">Mughal Empire</option>
+          <option value="maratha">Maratha Empire</option>
+          <option value="british">British Raj</option>
+          <option value="independence">Indian Independence</option>
+        </select>
+      </div>
+
+      <div class="filter-group">
+        <label for="eventType">Event Type:</label>
+        <select id="eventType">
+          <option value="all">All</option>
+          <option value="battle">Battle</option>
+          <option value="treaty">Treaty</option>
+          <option value="law">Law</option>
+          <option value="movement">Movement</option>
+          <option value="event">Event</option>
+        </select>
+      </div>
+
+      <div class="filter-group">
+        <label for="timeline">Select Year Range:</label>
+        <input type="range" min="300" max="1950" value="1950" id="timeline" />
+        <span id="timelineValue">Year: 1950</span>
+        <div style="margin-top: 0.5rem;">
+          <button id="playTimeline">▶️ Play</button>
+          <button id="pauseTimeline">⏸️ Pause</button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Map -->
+  <div id="map"></div>
+
+  <!-- Legend -->
+  <div id="legend">
+    <h4>🗘️ Legend</h4>
+    <ul>
+      <li><span class="icon">⚔️</span> Battle</li>
+      <li><span class="icon">📜</span> Law</li>
+      <li><span class="icon">🕊️</span> Treaty</li>
+      <li><span class="icon">✊</span> Movement</li>
+      <li><span class="icon">📌</span> Event</li>
+    </ul>
+  </div>
+
+  <!-- Loading Spinner -->
+  <div id="loading">Loading events...</div>
+
+  <!-- Leaflet JS -->
+  <script src="https://unpkg.com/leaflet/dist/leaflet.js"></script>
+
+  <!-- Main Script -->
+  <script src="script.js"></script>
+</body>
+</html>
